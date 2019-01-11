@@ -22,7 +22,7 @@ func main() {
 	Init()
 	Insert(insert_begin, insert_end)
 	Query()
-	Update(10, 100)
+	Update(update_begin, update_end)
 	//Delete()
 	Fini()
 	fmt.Println("Main func end!\n")
