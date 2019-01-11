@@ -49,7 +49,7 @@ func Insert(begin int, end int) {
 		start_time := time.Now()
 		tx, _ := db.Begin()
 		//每次循环用的都是tx内部的连接，没有新建连接，效率高
-		for i := 1; i < batch_size && begin < end+1; i++ {
+		for i := 0; i < batch_size && begin < end+1; i++ {
 			//每次循环用的都是tx内部的连接，没有新建连接，效率高
 			str := GetRandomSalt()
 			_, err = tx.Exec("INSERT INTO tbl_user(uid, username, age, memo, remark) values(?, ?, ?, ?, ?)", begin, "user"+strconv.Itoa(begin), begin-1000, str, MD5(str))
@@ -101,7 +101,7 @@ func Update(begin int, end int) {
 		start_time := time.Now()
 		tx, _ := db.Begin()
 		//每次循环用的都是tx内部的连接，没有新建连接，效率高
-		for i := 1; i < batch_size && begin < end+1; i++ {
+		for i := 0; i < batch_size && begin < end+1; i++ {
 			str := GetRandomString(10)
 			_, err = tx.Exec("UPDATE tbl_user SET memo=?, remark = ? WHERE uid = ?", str, MD5(str), begin)
 			if err != nil {

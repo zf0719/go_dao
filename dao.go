@@ -7,10 +7,10 @@ import (
 func main() {
 	fmt.Println("Main func start!\n")
 
-	var insert_begin int = 0
-	var insert_end int = 1000000
-	var update_begin int = 500000
-	var update_end int = 1000000
+	var insert_begin int = 1
+	var insert_end int = 10000000
+	var update_begin int = 9999900
+	var update_end int = 10000000
 	if update_begin < insert_begin {
 		update_begin = insert_begin
 	}
@@ -21,7 +21,7 @@ func main() {
 
 	Init()
 	Insert(insert_begin, insert_end)
-	Query()
+	//Query()
 	Update(update_begin, update_end)
 	//Delete()
 	Fini()
